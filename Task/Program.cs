@@ -23,3 +23,30 @@ for (int i = 0; i < array.Length; i++)
     array[i] = Console.ReadLine()!;
 }
 
+int maxLength = 3;
+int n = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= maxLength) n++;
+}
+
+string[] result = new string[n];
+int j = 0;
+for (int i = 0; i < array.Length; i++)
+{
+    if (array[i].Length <= maxLength)
+    {
+        result[j] = array[i];
+        j++;
+    }
+}
+
+System.Console.WriteLine();
+System.Console.WriteLine("Преобразованный массив: ");
+System.Console.Write("[");
+for (int i = 0; i < result.Length; i++)
+{
+    System.Console.Write($"'{result[i]}'");
+}
+System.Console.Write("]");
+

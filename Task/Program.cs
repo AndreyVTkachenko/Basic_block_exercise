@@ -11,42 +11,59 @@
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
 
-
-
-System.Console.WriteLine("введите количество элементов массива");
-int number = Convert.ToInt32(Console.ReadLine());
-string[] array = new string[number];
-
-for (int i = 0; i < array.Length; i++)
+void Main()
 {
-    System.Console.WriteLine($"Введите {i + 1}-й элемент массива");
-    array[i] = Console.ReadLine()!;
+    int number = ReadInt("Введите количество элементов массива: ");
+    string[] array = new string[number];
+    FillArray(number, array);
+    System.Console.WriteLine();
+    System.Console.WriteLine("Исходный массив: ");
+    PrintArray(array);
+    System.Console.WriteLine();
+    System.Console.WriteLine("Преобразованный массив: ");
+    PrintArray(ConvertArray(array));
 }
 
-int maxLength = 3;
-int n = 0;
-for (int i = 0; i < array.Length; i++)
+int ReadInt(string text)
 {
-    if (array[i].Length <= maxLength) n++;
+    System.Console.Write(text);
+    return Convert.ToInt32(Console.ReadLine());
 }
 
-string[] result = new string[n];
-int j = 0;
-for (int i = 0; i < array.Length; i++)
+void PrintArray(string[] array)
 {
-    if (array[i].Length <= maxLength)
+    System.Console.WriteLine("[" + string.Join(",  ", array) + "]");
+}
+
+string[] FillArray(int number, string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
     {
-        result[j] = array[i];
-        j++;
+        System.Console.WriteLine($"Введите {i + 1}-й элемент массива");
+        array[i] = Console.ReadLine()!;
     }
+    return array;
 }
 
-System.Console.WriteLine();
-System.Console.WriteLine("Преобразованный массив: ");
-System.Console.Write("[");
-for (int i = 0; i < result.Length; i++)
+string[] ConvertArray(string[] array)
 {
-    System.Console.Write($"'{result[i]}'");
+    int maxLength = 3;
+    int n = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= maxLength) n++;
+    }
+    string[] result = new string[n];
+    int j = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= maxLength)
+        {
+            result[j] = array[i];
+            j++;
+        }
+    }
+    return result;
 }
-System.Console.Write("]");
 
+Main();

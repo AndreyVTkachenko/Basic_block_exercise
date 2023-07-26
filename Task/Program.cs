@@ -24,18 +24,13 @@ void Main()
     PrintArray(ConvertArray(array));
 }
 
-int ReadInt(string text)
+int ReadInt(string text) // метод для считывания числа из терминала
 {
     System.Console.Write(text);
     return Convert.ToInt32(Console.ReadLine());
 }
 
-void PrintArray(string[] array)
-{
-    System.Console.WriteLine("[" + string.Join(",  ", array) + "]");
-}
-
-string[] FillArray(int number, string[] array)
+string[] FillArray(int number, string[] array) // метод для заполнения массива пользователем
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -45,7 +40,7 @@ string[] FillArray(int number, string[] array)
     return array;
 }
 
-string[] ConvertArray(string[] array)
+string[] ConvertArray(string[] array) // метод преобразования массива в соответсвии с условием задачи
 {
     int maxLength = 3;
     int n = 0;
@@ -64,6 +59,11 @@ string[] ConvertArray(string[] array)
         }
     }
     return result;
+}
+
+void PrintArray(string[] array) // вывод массива в терминал
+{
+    System.Console.WriteLine("[" + string.Join(",  ", array) + "]");
 }
 
 Main();
